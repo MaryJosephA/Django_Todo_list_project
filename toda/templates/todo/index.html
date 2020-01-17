@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+<h1> Welcome to Todo List page</h1>
+<form action="/todo/" method="post">
+    <h2>My Todo List:</h2>
+    <input name="todo_list" type="text"/> <br/>
+    <button>Add</button>
+    {% csrf_token %}
+</form>
+<br/>
+
+<br/>
+
+<ul>
+{% for item in items %}
+    <li>{{ item.list }}
+       <form action="todo/{{ item.id }}" method="delete">
+    <button>Delete</button>
+    </form>
+    </li>
+ {% endfor %}
+</ul>
+
+</body>
+</html>
+
